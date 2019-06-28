@@ -2,11 +2,11 @@
   <section class="section">
     <div class="columns is-mobile">
       <card
-        title="Free"
+        title="格安!"
         icon="github-circle"
       >
-        Open source on <a href="https://github.com/buefy/buefy">
-          GitHub
+        料金一覧は <a href="https://github.com/buefy/buefy">
+          こちら
         </a>
       </card>
 
