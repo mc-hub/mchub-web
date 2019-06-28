@@ -160,10 +160,10 @@
       return false;
     }
     public usernameValidator(input: string): boolean {
-      if (newUsername.length < 4) {
+      if (input.length < 4) {
         this.usernameerrormessage = "ユーザー名が短すぎます。";
         return false;
-      } else if (newUsername.length > 16) {
+      } else if (input.length > 16) {
         this.usernameerrormessage = "ユーザー名が長すぎます。";
         return false;
       } else {
@@ -176,10 +176,10 @@
     }
 
     public passwordValidator(input: string): boolean {
-      if (newPassword.length < 6) {
+      if (input.length < 6) {
         this.passworderrormessage = "パスワードが短すぎます。"
         return false;
-      } else if (newPassword.length > 128) {
+      } else if (input.length > 128) {
         this.passworderrormessage = "パスワードが長すぎます。"
         return false;
       } else {
@@ -192,7 +192,7 @@
     }
 
     public passwordconfirmValidator(input: string): boolean {
-      if (neww === this.password) {
+      if (input === this.password) {
         this.passwordconfirmerrormessage = ""
         return true;
       } else {
