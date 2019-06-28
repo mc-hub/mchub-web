@@ -63,7 +63,7 @@ export default class Manager extends Vue {
       await this.$store.dispatch('serverManager/createServer')
     } catch {
       console.log("error")
-    } 
-  }  
+    }
+  }
 }
 </script>
