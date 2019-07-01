@@ -23,7 +23,7 @@
             プラン一覧
           </a>
 
-<!--- ドロップダウンメニューだけど使いみちが思いつくまでこのまま。
+<!-- ドロップダウンメニューだけど使いみちが思いつくまでこのまま。
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               More
@@ -45,8 +45,8 @@
               </a>
             </div>
           </div>
-        
-        --->
+
+        -->
       </div>
 
         <div class="navbar-end">
