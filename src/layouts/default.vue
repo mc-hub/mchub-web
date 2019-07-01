@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar is-success" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item" href="/">
           <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
         </a>
 
@@ -15,14 +15,15 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item">
-            Home
+          <a class="navbar-item" href="/">
+            ホーム
           </a>
 
-          <a class="navbar-item">
-            Documentation
+          <a class="navbar-item" href="/">
+            プラン一覧
           </a>
 
+<!--- ドロップダウンメニューだけど使いみちが思いつくまでこのまま。
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               More
@@ -44,16 +45,18 @@
               </a>
             </div>
           </div>
-        </div>
+        
+        --->
+      </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
+              <a class="button is-primary" href="register">
+                <strong>新規登録</strong>
               </a>
-              <a class="button is-light">
-                Log in
+              <a class="button is-light" href="login">
+                ログイン
               </a>
             </div>
           </div>
