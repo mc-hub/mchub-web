@@ -74,9 +74,11 @@
     <div class="field">
       <div class="control">
         <label class="checkbox">
-          <input type="checkbox">
-          <a href="tos">利用規約</a>に同意します
+          <input v-model="tosagreed"type="checkbox">
+          <a  href="tos">利用規約</a>に同意します
+
         </label>
+        <p> {{tosagreederrormessage}} </p>
       </div>
     </div>
 
@@ -122,6 +124,10 @@
       },
       passwordconfirm: function(neww, old) {
         this.passwordconfirmValidator(neww);
+      },
+
+      tosagreed: function(neww, old){
+        this.tosagreedValidator(neww);
       }
     }
   })
@@ -134,14 +140,29 @@
     public usernameerrormessage: string = ""
     public passworderrormessage: string = ""
     public passwordconfirmerrormessage: string = ""
+    public tosagreederrormessage: string = ""
+    public tosagreed: boolean = false
     public onClick(): void {
       if (
-        this.emailValidator(this.email) ||
-        this.usernameValidator(this.username) ||
-        this.passwordValidator(this.password) ||
-        this.passwordconfirmValidator(this.passwordconfirm)) {
-        // TODO: APIサーバーに対して送る処理
-        // TODO: APIサーバーからエラー(例えばユーザー名がかぶってるなど)が帰ってきた場合の処理
+        this.emailValidator(this.email) &&
+        this.usernameValidator(this.username) &&
+        this.passwordValidator(this.password) &&
+        this.passwordconfirmValidator(this.passwordconfirm) &&
+        this.tosagreedValidator(this.tosagreed)
+       ) {
+
+              this.$axios.$post('http://localhost:4000/api/register', {
+        user:{
+        name: this.username,
+        email: this.email,
+        password: this.password
+      }})
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
       } else {
 
       }
@@ -203,6 +224,18 @@
       console.log("???? at passwordValidator"); //ありえ
       return false;
 
+    }
+    public tosagreedValidator(input: bool): boolean {
+      if(input == true){
+        this.tosagreederrormessage = ""
+        return true;
+      } else {
+        this.tosagreederrormessage = "利用規約に同意する必要があります"
+        return false;
+      }
+
+      console.log("???? at tosagreedValidator"); //あ
+      return false;
     }
 
 
