@@ -1,246 +1,110 @@
 <template>
-  <div class="root">
-
-
-
-
-    <div class="field">
-      <label class="label">ユーザー名</label>
-      <div class="control has-icons-left has-icons-right">
-        <input v-model="username" class="input is-success" type="text" placeholder="ログイン時のみ使用する名前です。(英数字のみ。4-16文字以内)" value="">
-        <p> {{ usernameerrormessage}} </p>
-
-        <span class="icon is-small is-left">
-          <i class="fas fa-user"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
+  <div>
+    <form class="form">
+      <div class="form-group">
+        <label class="label">ユーザー名</label>
+        <input
+          type="text"
+          name="username"
+          class="form-control"
+          v-model="username"
+          data-vv-as="タイトル"
+          v-validate="'required|min:4|max:16'"
+          :class="{'input': true, 'is-invalid': errors.has('username') }"
+        />
+        <div class="invalid-feedback" v-show="errors.has('username')">
+          {{ errors.first('username') }}
+        </div>
       </div>
-      <!---
-  <p class="help is-success">このユーザー名は使用できます!</p>
-  <p class="help is-failed">このユーザー名はすでに使用されています</p>
-  <p class="help is-letters-not-matched">ユーザー名は４文字〜１６文字以内である必要があります</p>
-  --->
-    </div>
 
-
-
-    <div class="field">
-      <label class="label">メールアドレス</label>
-      <div class="control has-icons-left has-icons-right">
-        <input v-model="email" id="address" class="input is-success" type="email" placeholder="必ず確認可能なメールアドレスを使用してください。" value="">
-        <p> {{ emailerrormessage }}</p>
-        <span class="icon is-small is-left">
-          <i class="fas fa-envelope"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-exclamation-triangle"></i>
-        </span>
+      <div class="form-group">
+        <label class="label">メールアドレス</label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          v-model="email"
+          data-vv-as="Email"
+          v-validate="'email|required'"
+          :class="{'input': true, 'is-invalid': errors.has('email') }"
+          />
+        <div class="invalid-feedback" v-show="errors.has('email')">
+          {{ errors.first('email') }}
+        </div>
       </div>
-      <!---<p class="help is-danger">メールアドレスが正しくありません。</p>--->
-    </div>
 
-
-
-    <div class="password">
-      <label class="password">パスワード</label>
-      <div class="control has-icons-left has-icons-right">
-        <input v-model="password" class="input is-success" type="password" placeholder="強固なパスワードを使用することをおすすめします。6-128文字以内。)" value="">
-        <p> {{ passworderrormessage }} </p>
-        <span class="icon is-small is-left">
-          <i class="fas fa-user"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
+      <div class="form-group">
+        <label class="password">パスワード</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          v-model="password"
+          data-vv-as="password"
+          v-validate="'required'"
+          :class="{'input': true, 'form-danger': errors.has('password') }"
+          />
+        <div class="invalid-feedback" v-show="errors.has('password')">
+          {{ errors.first('password') }}
+        </div>
       </div>
-    </div>
 
-    <div class="passwordconfirm">
-      <label class="password">パスワード確認</label>
-      <div class="control has-icons-left has-icons-right">
-        <input v-model="passwordconfirm" class="input is-success" type="password" placeholder="確認のため、もう一度入力してください。" value="">
-        <p> {{ passwordconfirmerrormessage }} </p>
-        <span class="icon is-small is-left">
-          <i class="fas fa-user"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
+      <div class="form-group">
+        <label class="password_confirm">パスワード確認</label>
+        <input
+          type="password"
+          name="passwordConfirm"
+          class="form-control"
+          v-model="passwordConfirm"
+          data-vv-as="password"
+          v-validate="'required|confirmed:password'"
+          ref="password"
+          :class="{'input': true, 'form-danger': errors.has('passwordConfirm') }"
+          />
       </div>
-    </div>
 
-    <div class="field">
-      <div class="control">
-        <label class="checkbox">
-          <input v-model="tosagreed"type="checkbox">
-          <a  href="tos">利用規約</a>に同意します
-
-        </label>
-        <p> {{tosagreederrormessage}} </p>
+      <div class="form-check">
+        <label v-model="tosAgreed" class="form-check-label" for="exampleCheck1"><a  href="tos">利用規約</a>に同意します</label>
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
       </div>
-    </div>
 
 
-
-    <div class="field is-grouped">
-      <div class="control">
-        <button @click="onClick" class="button is-link">登録</button>
+      <div class="form-group">
+        <button @click="register" type="button" class="btn btn-primary btn-sm">登録する</button>
+        <button type="button" class="btn btn-secondary btn-sm">Back</button>
       </div>
-      <div class="control">
-        <button class="button is-text">戻る</button>
-      </div>
-    </div>
-
-
+    </form>
   </div>
 </template>
 
 
 <script lang="ts">
-  import {
-    Vue,
-    Component
-  } from 'vue-property-decorator';
+import {Vue, Component} from 'vue-property-decorator';
 
-  @Component({
-    watch: {
-      // この関数は question が変わるごとに実行されます。
-      email: function(newEmail, oldEmail) {
+@Component
+export default class Register extends Vue {
+  public email: string = ""
+  public username: string = ""
+  public password: string = ""
+  public passwordConfirm: string = ""
+  public emailerrormessage = ""
+  public usernameerrormessage: string = ""
+  public passworderrormessage: string = ""
+  public passwordconfirmerrormessage: string = ""
+  public tosagreederrormessage: string = ""
+  public tosAgreed: boolean = false
 
-        this.emailValidator(newEmail);
-      },
-
-      username: function(newUsername, oldUsername) {
-
-        this.usernameValidator(newUsername);
-      },
-
-      password: function(newPassword, oldPassword) {
-
-        this.passwordValidator(newPassword);
-
-      },
-      passwordconfirm: function(neww, old) {
-        this.passwordconfirmValidator(neww);
-      },
-
-      tosagreed: function(neww, old){
-        this.tosagreedValidator(neww);
-      }
-    }
-  })
-  export default class Register extends Vue {
-    public email: string = ""
-    public username: string = ""
-    public password: string = ""
-    public passwordconfirm: string = ""
-    public emailerrormessage = ""
-    public usernameerrormessage: string = ""
-    public passworderrormessage: string = ""
-    public passwordconfirmerrormessage: string = ""
-    public tosagreederrormessage: string = ""
-    public tosagreed: boolean = false
-    public onClick(): void {
-      if (
-        this.emailValidator(this.email) &&
-        this.usernameValidator(this.username) &&
-        this.passwordValidator(this.password) &&
-        this.passwordconfirmValidator(this.passwordconfirm) &&
-        this.tosagreedValidator(this.tosagreed)
-       ) {
-
-              this.$axios.$post('http://localhost:4000/api/register', {
-        user:{
+  async register(): void {
+    const validated = await this.$validator.validateAll()
+    if (validated) {
+      const user = {
         name: this.username,
         email: this.email,
         password: this.password
-      }})
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-      } else {
-
       }
 
+      const result = await this.$axios.$post('http://localhost:4000/api/register', { user })
     }
-
-    public emailValidator(input: string): boolean {
-      if (!(input.includes("@"))) {
-        this.emailerrormessage = "メールアドレスが正しくありません。";
-        return false;
-      } else {
-        this.emailerrormessage = "";
-        return true;
-      }
-      console.log("???? at emailValidator"); //ありえない
-      return false;
-    }
-    public usernameValidator(input: string): boolean {
-      if (input.length < 4) {
-        this.usernameerrormessage = "ユーザー名が短すぎます。";
-        return false;
-      } else if (input.length > 16) {
-        this.usernameerrormessage = "ユーザー名が長すぎます。";
-        return false;
-      } else {
-        this.usernameerrormessage = "";
-        return true;
-      }
-
-      console.log("???? at usernameValidator"); //ありえない
-      return false;
-    }
-
-    public passwordValidator(input: string): boolean {
-      if (input.length < 6) {
-        this.passworderrormessage = "パスワードが短すぎます。"
-        return false;
-      } else if (input.length > 128) {
-        this.passworderrormessage = "パスワードが長すぎます。"
-        return false;
-      } else {
-        this.passworderrormessage = ""
-        return true;
-      }
-
-      console.log("???? at passwordValidator"); //ありえない
-      return false;
-    }
-
-    public passwordconfirmValidator(input: string): boolean {
-      if (input === this.password) {
-        this.passwordconfirmerrormessage = ""
-        return true;
-      } else {
-        this.passwordconfirmerrormessage = "パスワードが合致しません。"
-        return false;
-      }
-
-      console.log("???? at passwordValidator"); //ありえ
-      return false;
-
-    }
-    public tosagreedValidator(input: bool): boolean {
-      if(input == true){
-        this.tosagreederrormessage = ""
-        return true;
-      } else {
-        this.tosagreederrormessage = "利用規約に同意する必要があります"
-        return false;
-      }
-
-      console.log("???? at tosagreedValidator"); //あ
-      return false;
-    }
-
-
-
-
-
   }
+}
 </script>

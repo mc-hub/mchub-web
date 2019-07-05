@@ -32,6 +32,7 @@ const config: NuxtConfiguration = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: 'plugins/vee-validate.ts', ssr: true }
   ],
   /*
   ** Nuxt.js modules
