@@ -28,6 +28,7 @@
     "sass-loader": "^7.1.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.2",
+    "vee-validate": "^2.2.11",
     "vue": "^2.6.10",
     "vue-property-decorator": "^8.2.1"
   },
