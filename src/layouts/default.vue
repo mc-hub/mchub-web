@@ -1,7 +1,12 @@
 <template>
   <div>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+      <n-link to="/" class="navbar-brand col-sm-3 col-md-2 mr-0">
+        <img
+          src="~/assets/mc-logo.png"
+          class="mr-1">
+        MC Hub
+      </n-link>
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
@@ -12,77 +17,7 @@
 
     <div class="container-fluid">
       <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <n-link
-                  to="/"
-                  class="nav-link">
-                  <span class="mdi mdi-home"></span>
-                  Dashboard
-                </n-link>
-              </li>
-              <li class="nav-item">
-                <n-link
-                  to="/console"
-                  class="nav-link">
-                  <span class="mdi mdi-console"></span>
-                  Console
-                </n-link>
-              </li>
-              <li class="nav-item">
-                <n-link
-                  to="/players"
-                  class="nav-link">
-                  <span class="mdi mdi-account-multiple-outline"></span>
-                  Players
-                </n-link>
-              </li>
-              <li class="nav-item">
-                <n-link
-                  to="/report"
-                  class="nav-link">
-                  <span class="mdi mdi-file-document-box-multiple-outline"></span>
-                  Reports
-                </n-link>
-              </li>
-            </ul>
-
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Saved reports</span>
-              <a class="d-flex align-items-center text-muted" href="#">
-                <span class="mdi mdi-plus-circle"></span>
-              </a>
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span class="mdi mdi-file-text"></span>
-                  Current month
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span class="mdi mdi-file-text"></span>
-                  Last quarter
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span dclass="mdi mdi-file-text"></span>
-                  Social engagement
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span class="mdi mdi-file-text"></span>
-                  Year-end sale
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <SideBar />
       </div>
     </div>
 
@@ -165,6 +100,11 @@ export default class DefaultLayout extends Vue {
   padding-bottom: .75rem;
   font-size: 1rem;
   background-color: rgba(0, 0, 0, .25);
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .navbar .form-control {
