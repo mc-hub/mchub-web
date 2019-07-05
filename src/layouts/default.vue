@@ -1,28 +1,95 @@
 <template>
   <div>
-    <b-navbar type="dark" variant="dark">
-      <b-navbar-nav>
-        <b-nav-item href="#">Home</b-nav-item>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="#">Sign out</a>
+        </li>
+      </ul>
+    </nav>
 
-        <!-- Navbar dropdowns -->
-        <b-nav-item-dropdown text="Lang" right>
-          <b-dropdown-item href="#">EN</b-dropdown-item>
-          <b-dropdown-item href="#">ES</b-dropdown-item>
-          <b-dropdown-item href="#">RU</b-dropdown-item>
-          <b-dropdown-item href="#">FA</b-dropdown-item>
-        </b-nav-item-dropdown>
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <n-link
+                  to="/"
+                  class="nav-link">
+                  <span class="mdi mdi-home"></span>
+                  Dashboard
+                </n-link>
+              </li>
+              <li class="nav-item">
+                <n-link
+                  to="/console"
+                  class="nav-link">
+                  <span class="mdi mdi-console"></span>
+                  Console
+                </n-link>
+              </li>
+              <li class="nav-item">
+                <n-link
+                  to="/players"
+                  class="nav-link">
+                  <span class="mdi mdi-account-multiple-outline"></span>
+                  Players
+                </n-link>
+              </li>
+              <li class="nav-item">
+                <n-link
+                  to="/report"
+                  class="nav-link">
+                  <span class="mdi mdi-file-document-box-multiple-outline"></span>
+                  Reports
+                </n-link>
+              </li>
+            </ul>
 
-        <b-nav-item-dropdown text="User" right>
-          <b-dropdown-item href="#">Account</b-dropdown-item>
-          <b-dropdown-item href="#">Settings</b-dropdown-item>
-        </b-nav-item-dropdown>
-      </b-navbar-nav>
-    </b-navbar>
-
-    <div>
-      <nuxt />
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Saved reports</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span class="mdi mdi-plus-circle"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span class="mdi mdi-file-text"></span>
+                  Current month
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span class="mdi mdi-file-text"></span>
+                  Last quarter
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span dclass="mdi mdi-file-text"></span>
+                  Social engagement
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span class="mdi mdi-file-text"></span>
+                  Year-end sale
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
     </div>
 
+    <div class="mt-4">
+      <nuxt />
+    </div>
+    
   </div>
 </template>
 
@@ -34,129 +101,85 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
     SideBar: () => import('~/components/SideBar.vue')
   }
 })
-export default class PostPreview extends Vue {
-  @Prop()
 
-  data() {
-    return {
-      items: [
-        {
-          title: 'Home',
-          icon: 'home',
-          to: { name: 'index' }
-        },
-        {
-          title: 'Inspire',
-          icon: 'lightbulb',
-          to: { name: 'inspire' }
-        }
-      ]
-    }
-  }
+export default class DefaultLayout extends Vue {
 }
 </script>
 
 <style lang="scss">
-$menu-item-active-background-color: hsl(171, 100%, 41%);
-$menu-item-color: hsl(0, 0%, 100%);
 
-.nav-tag{
-  padding-right: 30px;
+// Sidebar
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
 }
-.tag-notif{
-  border-radius: 50%;
-  position: absolute;
-  top: 5px;
-  margin-left: 10px;
 
-  @media (max-width: 768px) {
-    margin-left: -2px;
-  }
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
-.hero{
-}
-.navbar{
 
-  &-item{
-    &.is-active{
-    }
-    &:hover {
-    }
-  }
-
-  .is--brand{
-    &:hover {
-    }
-  }
-
-  &-brand-logo{
-    max-height: 3rem !important;
-    border-radius: .25em;
-    padding: .25em;
-  }
-
-  &-dropdown{
-    .navbar-item{
-    }
-  }
-
-  &-burger{
-    border: 0;
-    span{
-    }
-  }
-
-  &-link{
-
-    figure{
-      img{
-        border-radius: 50%;
-        max-height: 2em;
-      }
-    }
-
-    &:hover{
-    }
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
   }
 }
 
-.message.is-dark{
-  .message-body{
-  }
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
 }
 
-.breadcrumb:not(:last-child){
-  margin-bottom: 0;
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #999;
 }
 
-@media screen and (min-width: 1088px) {
-  .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
-  }
-}
-// navigation left area
-.aside{
-  padding: 2em .2em 0 1em;
-
-  a{
-  }
-
-  .menu-list {
-    li {
-      margin-top: .5em;
-    }
-  }
+.sidebar .nav-link.active {
+  color: #007bff;
 }
 
-// main area
-.main{
-  padding: 2em 1em 0 1em;
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
 }
 
-.menu-label{
-  margin-left: .5em;
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
 }
 
-.block{
-  margin-top: .5em;
+// Navbar
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, .25);
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
 }
 </style>

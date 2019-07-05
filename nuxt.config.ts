@@ -22,6 +22,10 @@ const config: NuxtConfiguration = {
   ** Customize the progress-bar color
   */
   loading: { color: '#fff' },
+
+  router: {
+    linkExactActiveClass: "active",
+  },
   /*
   ** Global CSS
   */
