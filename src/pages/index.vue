@@ -22,10 +22,10 @@
             <input type="text" class="form-control" aria-label="Default" placeholder="my server">
           </td>
         </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-        </tr>
+
+        <ServerIP />
+        <ServerPlayerSlot />
+
       </tbody>
     </table>
   </div>
@@ -34,7 +34,12 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
 
-@Component
+@Component({
+  components: {
+    ServerIP: () => import('~/components/dashboard/ServerIP.vue'),
+    ServerPlayerSlot: () => import('~/components/dashboard/ServerPlayerSlot.vue'),
+  }
+})
 export default class extends Vue {
 }
 </script>
@@ -43,6 +48,10 @@ export default class extends Vue {
 .table {
   th, td {
     vertical-align: middle;
+
+    &:last-of-type {
+      border-bottom: 1px solid #dee2e6;
+    }
   }
 
   th {

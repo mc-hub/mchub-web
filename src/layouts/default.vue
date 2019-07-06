@@ -4,6 +4,7 @@
       <n-link to="/" class="navbar-brand col-sm-3 col-md-2 mr-0">
         <img
           src="~/assets/mc-logo.png"
+          alt="logo"
           class="mr-1">
         MC Hub
       </n-link>
