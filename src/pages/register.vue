@@ -2,13 +2,13 @@
   <div>
     <form class="form">
       <div class="form-group">
-        <label class="label">ユーザー名</label>
+        <label class="label">ユーザーID</label>
         <input
           type="text"
           name="username"
           class="form-control"
           v-model="username"
-          data-vv-as="タイトル"
+          data-vv-as="ユーザーID"
           v-validate="'required|min:4|max:16'"
           :class="{'input': true, 'is-invalid': errors.has('username') }"
         />
