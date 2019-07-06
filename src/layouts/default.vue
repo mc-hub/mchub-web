@@ -8,10 +8,14 @@
           class="mr-1">
         MC Hub
       </n-link>
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
       <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sign out</a>
+        <li class="nav-item">
+          <n-link to="/register">
+            <button type="button" class="btn btn-outline-info">Sign up</button>
+          </n-link>
+          <n-link to="/login">
+            <button type="button" class="btn btn-outline-light">Login</button>
+          </n-link>
         </li>
       </ul>
     </nav>
