@@ -20,16 +20,16 @@
       </ul>
     </nav>
 
-    <div class="container-fluid">
-      <div class="row">
+    <div class="row">
+      <div class="">
         <SideBar />
+      </div>
+
+      <div class="col mt-4">
+        <nuxt />
       </div>
     </div>
 
-    <div class="mt-4">
-      <nuxt />
-    </div>
-    
   </div>
 </template>
 
@@ -104,7 +104,7 @@ export default class DefaultLayout extends Vue {
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: 1rem;
-  background-color: rgba(0, 0, 0, .25);
+  //background-color: rgba(0, 0, 0, .25);
 
   img {
     width: 24px;

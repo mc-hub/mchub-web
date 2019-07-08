@@ -1,6 +1,7 @@
 <template>
   <div>
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <nav class="col-lg-2 col-3 d-none d-md-block bg-light sidebar">
+      <!-- koko default ni oku -->
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
