@@ -20,15 +20,84 @@
       </ul>
     </nav>
 
-    <div class="row">
-      <div class="">
-        <SideBar />
-      </div>
+      <div class="row">
+        <div class="col-3 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <n-link
+                  to="/"
+                  class="nav-link">
+                  <span class="mdi mdi-home"></span>
+                  Dashboard
+                </n-link>
+              </li>
+              <li class="nav-item">
+                <n-link
+                  to="/console"
+                  class="nav-link">
+                  <span class="mdi mdi-console"></span>
+                  Console
+                </n-link>
+              </li>
+              <li class="nav-item">
+                <n-link
+                  to="/players"
+                  class="nav-link">
+                  <span class="mdi mdi-account-multiple-outline"></span>
+                  Players
+                </n-link>
+              </li>
+              <li class="nav-item">
+                <n-link
+                  to="/report"
+                  class="nav-link">
+                  <span class="mdi mdi-file-document-box-multiple-outline"></span>
+                  Reports
+                </n-link>
+              </li>
+            </ul>
 
-      <div class="col mt-4">
-        <nuxt />
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Saved reports</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span class="mdi mdi-plus-circle"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span class="mdi mdi-file-text"></span>
+                  Current month
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span class="mdi mdi-file-text"></span>
+                  Last quarter
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span dclass="mdi mdi-file-text"></span>
+                  Social engagement
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span class="mdi mdi-file-text"></span>
+                  Year-end sale
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="col-9 mt-4">
+          <nuxt />
+        </div>
       </div>
-    </div>
 
   </div>
 </template>
