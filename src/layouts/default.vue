@@ -16,6 +16,15 @@
           <b-dropdown-item href="#">Account</b-dropdown-item>
           <b-dropdown-item href="#">Settings</b-dropdown-item>
         </b-nav-item-dropdown>
+
+
+      </b-navbar-nav>
+
+      <b-navbar-nav class="ml-auto">
+        <b-nav-form>
+          <b-button variant="primary" href="/login">Login</b-button>
+          <b-button variant="success" href="/register">Register</b-button>
+        </b-nav-form>
       </b-navbar-nav>
     </b-navbar>
 

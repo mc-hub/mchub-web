@@ -41,6 +41,7 @@ export default class Login extends Vue {
 
   async login(): void {
 
+    middleware: 'notAuthenticated'
     const validated = await this.$validator.validateAll()
     console.log(this.email);
     if (validated) {
@@ -65,7 +66,7 @@ export default class Login extends Vue {
         }
         this.$store.commit('setAuth', auth) // mutating to store for client rendering
         Cookie.set('auth', auth) // saving token in cookie for server rendering
-        this.$router.push('/')
+        this.$router.push('/loggedin')
       }, 1000)
     }
   }
