@@ -1,6 +1,6 @@
-@import 'spec/settings/index';
-@import 'spec/tools/index';
-@import "~bootstrap/scss/bootstrap";
-@import 'spec/index';
-@import 'vendor/index';
-
+@import '~assets/styles/spec/settings/index';
+@import '~assets/styles/spec/tools/index';
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-vue/src/index.scss';
+@import '~assets/styles/spec/index';
+@import '~assets/styles/vendor/index';
