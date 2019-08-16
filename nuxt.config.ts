@@ -32,6 +32,7 @@ const config: NuxtConfiguration = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '@/plugins/bootstrap.ts',
   ],
   /*
   ** Nuxt.js modules
