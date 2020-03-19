@@ -1,75 +1,51 @@
 <template>
   <div>
-    <nav class="navbar is-success" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
-          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-        </a>
+    <b-navbar type="dark" variant="dark">
+      <b-navbar-nav>
+        <b-nav-item href="#">Home</b-nav-item>
 
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
+        <!-- Navbar dropdowns -->
+        <b-nav-item-dropdown text="Lang" right>
+          <b-dropdown-item href="#">EN</b-dropdown-item>
+          <b-dropdown-item href="#">ES</b-dropdown-item>
+          <b-dropdown-item href="#">RU</b-dropdown-item>
+          <b-dropdown-item href="#">FA</b-dropdown-item>
+        </b-nav-item-dropdown>
 
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item">
-            Home
-          </a>
+        <b-nav-item-dropdown text="User" right>
+          <b-dropdown-item href="#">Account</b-dropdown-item>
+          <b-dropdown-item href="#">Settings</b-dropdown-item>
+        </b-nav-item-dropdown>
 
-          <a class="navbar-item">
-            Documentation
-          </a>
 
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
+      </b-navbar-nav>
 
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                About
-              </a>
-              <a class="navbar-item">
-                Jobs
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">
-                Report an issue
-              </a>
-            </div>
-          </div>
-        </div>
+      <b-navbar-nav class="ml-auto">
+        <b-nav-form>
+          <b-button variant="primary" href="/login">Login</b-button>
+          <b-button variant="success" href="/register">Register</b-button>
+        </b-nav-form>
+      </b-navbar-nav>
+    </b-navbar>
 
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light">
-                Log in
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <div class="container column is-10">
+    <div>
       <nuxt />
     </div>
-    </section>
+
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
+
+@Component({
+  components: {
+    SideBar: () => import('~/components/SideBar.vue')
+  }
+})
+export default class PostPreview extends Vue {
+  @Prop()
+
   data() {
     return {
       items: [
@@ -90,6 +66,8 @@ export default {
 </script>
 
 <style lang="scss">
+$menu-item-active-background-color: hsl(171, 100%, 41%);
+$menu-item-color: hsl(0, 0%, 100%);
 
 .nav-tag{
   padding-right: 30px;

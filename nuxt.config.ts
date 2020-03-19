@@ -26,18 +26,20 @@ const config: NuxtConfiguration = {
   ** Global CSS
   */
   css: [
+    '@mdi/font/css/materialdesignicons.min.css',
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: 'plugins/vee-validate.ts', ssr: true }
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
     // Doc: https://buefy.github.io/#/documentation
-    'nuxt-buefy',
+    'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
